@@ -1,0 +1,36 @@
+<h3>{{titulo}}</h3>
+<hr>
+
+
+<div *ngIf="!clientes">
+    Cargando listado de Clientes...
+    </div>
+
+ <div *ngIf="clientes">
+ 
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nit</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let cliente of clientes | paginate: { itemsPerPage: 5, currentPage: p }"> 
+            <tr>
+                <td>
+                    {{cliente.nit}}
+                </td>
+                <td>
+                    {{cliente.nombre}}
+                </td>
+                <td>
+                        {{cliente.direccion}}
+                    </td>
+            </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>    
+
+</div>

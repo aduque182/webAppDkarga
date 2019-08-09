@@ -1,0 +1,28 @@
+<h3>{{titulo}}</h3>
+<hr>
+
+<form #formularioUsuario="ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-usuario">
+
+    <label>
+        Nombre
+        <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-pill badge-info">Campo obligatorio</span>
+    </label>
+    <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="usuario.displayName" class="form-control" required />
+
+    <label>
+        Email
+        <span *ngIf="!email.valid && email.touched" class="badge badge-pill badge-info">email invalido</span>
+    </label>
+    <input type="text" #email="ngModel" name="email" [(ngModel)]="usuario.email" class="form-control" required pattern="[0-9]+" />
+
+    <label>
+        Password
+        <span *ngIf="!password.valid && password.touched" class="badge badge-pill badge-info">Campo obligatorio</span>
+    </label>
+    <input type="text" #password="ngModel" name="password" [(ngModel)]="usuario.password" class="form-control" required>
+    <br>
+
+    <input type="submit" value="{{titulo}}" [disabled]="!formularioUsuario.form.valid" class="btn btn-danger" />
+
+
+</form>

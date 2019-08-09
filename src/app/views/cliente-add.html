@@ -1,0 +1,27 @@
+<h3>{{titulo}}</h3>
+<hr>
+
+<form #formularioCliente= "ngForm" (ngSubmit)="onSubmit()" class="col-lg-6" id="form-cliente">
+<label>
+    Nit
+    <span *ngIf="!nit.valid && nit.touched"  class="badge badge-pill badge-info">Nit invalido</span>
+</label>
+<input type="text" #nit="ngModel" name="nit" [(ngModel)]="cliente.nit" class="form-control"required pattern="[0-9]+"/>
+
+
+<label>
+    Nombre
+    <span *ngIf="!nombre.valid && nombre.touched"  class="badge badge-pill badge-info">Campo obligatorio</span>
+</label>
+<input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="cliente.nombre" class="form-control" required/>
+
+<label>
+    Direccion
+    <span *ngIf="!direccion.valid && direccion.touched"  class="badge badge-pill badge-info" >Campo obligatorio</span>
+</label>
+<input type="text" #direccion="ngModel" name="direccion" [(ngModel)]="cliente.direccion" class="form-control" required>
+<br>
+<input type="submit" value="{{titulo}}"  [disabled]="!formularioCliente.form.valid" class="btn btn-danger"/>
+
+
+</form>

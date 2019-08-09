@@ -1,0 +1,19 @@
+<h3>{{titulo}}</h3>
+<hr>
+
+
+<div *ngIf="!usuarios">
+    Cargando listado de Clientes...
+    </div>
+
+ <div *ngIf="usuarios">
+    <ul>
+       
+        <li *ngFor="let usuario of usuarios ">
+            
+            <strong>{{usuario.displayName}}</strong>
+            <p>{{usuario.email}}</p>
+        </li>
+    </ul>
+    
+    </div> 
